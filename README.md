@@ -1,5 +1,5 @@
 # c10-6-m-phpreact
-Sistema gestion restaurante (carta digital)
+*Sistema gestion restaurante (carta digital)*
 
 El desarrollo de un sistema de gestión para un restaurante que permita a los clientes realizar pedidos a través de una plataforma en línea.
 La plataforma debe ser accesible desde cualquier dispositivo con conexión a Internet y estara diseñada de manera intuitiva para facilitar la experiencia del usuario.
