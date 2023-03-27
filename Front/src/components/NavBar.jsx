@@ -12,11 +12,11 @@ export const NavBar =  () => {
         <Toolbar sx={{width:"100%" , display:"flex",justifyContent:"space-between"}}>
 
           <IconButton size="large" edge="start"  color="gray"  aria-label="menu"  sx={{ }} >
-            hola
+            logo
           </IconButton>
          
           <Typography  variant="h6" component="div" sx={{  mr:"100px" }}>
-            por que viejo aca esto
+           lorem 
           </Typography>
           
           <Button  color="inherit" sx={{}}>Login</Button>
