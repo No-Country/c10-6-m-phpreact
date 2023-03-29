@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Home } from './components/home'
+import { HomeCarousel } from './components/HomeCarousel'
 import { ItemList } from './components/ItemList'
 import {NavBar} from "./components/NavBar"
 
@@ -10,7 +12,8 @@ function App() {
     <BrowserRouter>
           <NavBar/>
           <Routes>
-            <Route exact path='/' element={ <ItemList/>}/>
+            <Route exact path='/' element={ <Home/>}/>
+
           </Routes>
     </BrowserRouter>
         

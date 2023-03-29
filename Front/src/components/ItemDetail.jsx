@@ -2,9 +2,6 @@
 
 
 
-
-
-
 export const ItemDetail = ()=>{
 
     return(

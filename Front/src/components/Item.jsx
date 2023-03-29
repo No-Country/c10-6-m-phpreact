@@ -26,7 +26,7 @@ export const Item = ({nombre,id,descripcion,precio})=>{
                     </Typography>
                     </CardContent>
                     <CardActions>
-                        <NavLink>ver plato </NavLink>
+                        <NavLink >ver plato </NavLink>
                     </CardActions>
             </Card>
         </>
