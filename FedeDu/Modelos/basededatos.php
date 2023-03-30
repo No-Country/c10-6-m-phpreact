@@ -1,7 +1,9 @@
 <?php
+
 class Basededatos {
 	private $conexion;
 	public $error;
+	public $listar_datos;
 
 	function __construct($servidor, $usuario, $clave, $base) {
 		if(!$this->_connect($servidor, $usuario, $clave, $base)) {
@@ -22,6 +24,7 @@ class Basededatos {
 	}
 
 	public function enviarConsulta($query) {
+		
 		$tipo = strtoupper(substr($query, 0,6));
 
 		switch($tipo) {
@@ -56,6 +59,7 @@ class Basededatos {
 					}
 					return $listar_datos;
 				}
+
 				break;
 		}
 

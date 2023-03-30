@@ -1,5 +1,0 @@
-con el archivo .htaccess generamos un punto de acceso único a nuestras vistas.
-Le dijimos que desactive las multivistas: Options -MultiViews
-Activamos la posibilidad de reescribir: RewriteEngin On
-Le ponemos una condicion en la que si no encuentra la url que le solicitan: RewriteCond %{REQUEST_FILENAME} !-f
-Se redirija a un archivo que nosotros designamos: RewriteRule ^ index.php [QSA,L]

@@ -4,8 +4,8 @@ include("basededatos.php");
 define('SERVIDOR', 'localhost');
 define('USUARIO', 'root');
 define('CLAVE', '');
-define('BASE','perros');
+define('BASE','resto_nocountry');
 
 
-$bdconx = new Basededatos(SERVIDOR, USUARIO, CLAVE, BASE);
+$bd = new Basededatos(SERVIDOR, USUARIO, CLAVE, BASE);
 ?>
