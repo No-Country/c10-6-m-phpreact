@@ -50,7 +50,7 @@ class ProductoModel {
 
     public function obtenerProducto($id) {
 
-        $sql = "SELECT * FROM productos WHERE id_producto = :id";
+        $sql = "SELECT * FROM productos WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->bindParam(':id', $id);
         $query->execute();
@@ -58,54 +58,36 @@ class ProductoModel {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $descuento, $imagen, $categoria) {
+        try {
+            $sql = "UPDATE productos SET nombre_producto = :nombre_producto, descripcion = :descripcion, precio = :precio, descuento = :descuento, imagen = :imagen, categoria = :categoria WHERE id = :id_producto";
+            $query = $this->db->prepare($sql);
+            $query->bindParam(':nombre_producto', $nombre_producto);
+            $query->bindParam(':descripcion', $descripcion);
+            $query->bindParam(':precio', $precio);
+            $query->bindParam(':descuento', $descuento);
+            $query->bindParam(':imagen', $imagen);
+            $query->bindParam(':categoria', $categoria);
+            $query->bindParam(':id_producto', $id_producto);
+            $query->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function borrarProducto($id_producto){
+        // Preparar consulta
+        $sql = "DELETE FROM productos WHERE id = :idProducto";
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':idProducto', $id_producto, PDO::PARAM_INT);
+
+        // Ejecutar consulta
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-
-/*
-class ProductoModel {
-    
-    private $conexion;
-
-    public function __construct() {
-        // Establecer la conexión con la base de datos
-        $this->conexion = new PDO('mysql:host=localhost;dbname=resto_nocountry;charset=utf8', 'usuario', 'contraseña');
-        $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    
-    public function agregarProducto($nombre_producto, $descripcion, $precio, $descuento, $imagen, $categoria) {
-        // Preparar la consulta SQL
-        $stmt = $this->conexion->prepare('INSERT INTO productos (nombre_producto, descripcion, precio, descuento, imagen, creado, categoria) VALUES (DEFAULT, ?, ?, ?, ?, ?, NOW(), ?)');
-
-        // Ejecutar la consulta SQL
-        $stmt->execute([$nombre_producto, $descripcion, $precio, $descuento, $imagen, $categoria]);
-    }
-    
-    public function obtenerProductos() {
-        // Preparar la consulta SQL
-        $stmt = $this->conexion->prepare('SELECT * FROM productos');
-
-        // Ejecutar la consulta SQL
-        $stmt->execute();
-
-        // Obtener los resultados de la consulta SQL
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Devolver los resultados
-        return $resultados;
-    }
-
-    public function obtenerProducto($id_producto) {
-        // Preparar la consulta SQL
-        $query = $this->conexion->prepare('SELECT * FROM productos WHERE id_producto = $id_producto');
-
-        // Ejecutar la consulta SQL
-        $query->execute();
-
-        // Obtener los resultados de la consulta SQL
-        $resultados = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        // Devolver los resultados
-        return $resultados;
-    }
-}*/
-
-?>

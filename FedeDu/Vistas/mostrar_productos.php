@@ -29,9 +29,8 @@ $productos = $bd->mostrar_productos();
 				<td><?php echo $producto['categoria']; ?></td>
 				<td><img src="<?php echo $producto['imagen']; ?>" alt="Imagen del producto" style="width: 100px;"></td>
 				<td>
-					<a href="<?php echo 'index.php?accion=ver&id=' . $producto['id']; ?>">Ver</a>
-					<a href="<?php echo 'index.php?accion=editar&id=' . $producto['id']; ?>">Editar</a>
-					<a href="<?php echo 'index.php?accion=borrar&id=' . $producto['id']; ?>">Borrar</a>
+					<a href="<?php echo 'editar_producto.php?id=' . $producto['id']; ?>">Editar</a>
+					<a href="<?php echo '../Controladores/selector.php?accion=borrar&id=' . $producto['id']; ?>">Borrar</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
