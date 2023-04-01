@@ -1,9 +1,12 @@
 
 import { Card,CardMedia,CardContent,Typography,CardActions } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { ItemDetailContainer } from "./ItemDetailContainer";
+
 
 
 export const Item = ({nombre,id,descripcion,precio})=>{
+    
 
 
     return(
@@ -26,7 +29,7 @@ export const Item = ({nombre,id,descripcion,precio})=>{
                     </Typography>
                     </CardContent>
                     <CardActions>
-                        <NavLink >ver plato </NavLink>
+                        <NavLink to={`/plato/${id}`} >ver plato </NavLink> 
                     </CardActions>
             </Card>
         </>
