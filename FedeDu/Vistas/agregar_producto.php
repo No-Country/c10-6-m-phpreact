@@ -32,5 +32,7 @@
 
         <input type="submit" value="Cargar Producto">
     </form>
+    <br>
+    <a href="mostrar_productos.php">volver</a> 
 </body>
 </html>

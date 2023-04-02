@@ -12,7 +12,7 @@ class ProductoController {
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
             $descuento = $_POST['descuento'];
-            $imagen = '';
+            //$imagen = '';
             $categoria = $_POST['categoria'];
 
             // Verifico si se ha enviado una imagen
@@ -20,7 +20,7 @@ class ProductoController {
 
                 // Guardo el nombre del archivo y la extensión y el tamaño
                 $imagen_nombre = $_FILES['imagen']['name'];
-                $imagen_tipo = $_FILES['imagen']['type'];
+                //$imagen_tipo = $_FILES['imagen']['type'];
                 $imagen_tamano = $_FILES['imagen']['size'];
 
                 // Guardo la imagen del formulario               
@@ -90,7 +90,7 @@ class ProductoController {
 
                 // Guardo el nombre del archivo y la extensión y el tamaño
                 $imagen_nombre = $_FILES['imagen']['name'];
-                $imagen_tipo = $_FILES['imagen']['type'];
+                //$imagen_tipo = $_FILES['imagen']['type'];
                 $imagen_tamano = $_FILES['imagen']['size'];
 
                 // Guardo la imagen del formulario               
@@ -109,26 +109,26 @@ class ProductoController {
                             unlink($imagen_vieja);
                         }
                     }
-                } else {
-                    //Si no se subió una imagen nueva entonces guardamos en imagen_url la imagen original.
-                    $imagen_url = $imagen_vieja;
-                }
-            // Crear una instancia del modelo ProductoModel
-            $producto_model = new ProductoModel();
+                } 
+            } else {
+                //Si no se subió una imagen nueva entonces guardamos en imagen_url la imagen original.
+                $imagen_url = $imagen_vieja;
+            }
+            try {
+                // Crear una instancia del modelo ProductoModel
+                $producto_model = new ProductoModel();
+                
+                // Ejecutamos el metodo de edicion del modelos
+                $producto_model->actualizarProducto($id, $nombre_producto, $descripcion, $precio, $descuento, $imagen_url, $categoria);
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
             
-            // Ejecutamos el metodo de edicion del modelos
-            $producto_model->actualizarProducto($id, $nombre_producto, $descripcion, $precio, $descuento, $imagen_url, $categoria);
             
             // Redireccionar a la vista de los productos
             header('Location: ../Vistas/mostrar_productos.php');
-            exit();
-            }
-      
-        } else {
-            //si por alguna razón falla el envio del POST devolvemos a la vista de ediicion con un parametro false
-            header('Location: ../Vistas/editar_producto.php?carga=False');
         }
-
     }
 
     public function borrar_producto($id) {
