@@ -61,7 +61,7 @@ class ProductoController {
         $producto = $producto_model->obtenerProducto($id_producto);
 
         // Devuelvo el producto en una variable
-        return $producto;
+        return json_encode($producto);
     }
 
     public function mostrar_productos() {

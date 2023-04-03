@@ -29,17 +29,6 @@ switch ($accion) {
     case 'editar':
         //mostramos un producto en particular y para esto el GET tiene que venir tanto con el valor del accion como con el id del producto que desean que muestre: ?accion=mostrarid&id=<id_producto>
         $control->editar_producto($_GET['id']);
-        /*foreach ($_POST as $key => $value) {
-            echo "Clave: " . $key . ", Valor: " . $value . "<br>";
-         }
-         foreach ($_GET as $key => $value) {
-            echo "Clave: " . $key . ", Valor: " . $value . "<br>";
-         }
-         foreach ($_FILES as $key => $value) {
-            echo "Clave: " . $key . ";"; foreach ($_FILES[$key] as $key2 => $value2) {
-                echo "Clave: " . $key2 . ", Valor: " . $value2 . "<br>";
-             }
-         }*/
         break;
     case 'borrar':
         //mostramos un producto en particular y para esto el GET tiene que venir tanto con el valor del accion como con el id del producto que desean que muestre: ?accion=mostrarid&id=<id_producto>
