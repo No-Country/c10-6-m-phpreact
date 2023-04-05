@@ -25,7 +25,10 @@ export const ItemList = ()=>{
             } catch (error) {
                 console.log(error.message)
             }
-        },[]);
+        },[]); //se podria hacer un dispacht aca ? abro hilo
+
+
+
         
         
     return(

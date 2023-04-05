@@ -1,6 +1,6 @@
 import { HomeCarousel } from "./HomeCarousel"
 import { ItemList } from "./ItemList"
-
+import { Order } from "./Order"
 
 
 
@@ -16,6 +16,7 @@ export const Home = ()=>{
         <>
         <HomeCarousel></HomeCarousel>
         <ItemList></ItemList>
+       
         </>
     )
 
