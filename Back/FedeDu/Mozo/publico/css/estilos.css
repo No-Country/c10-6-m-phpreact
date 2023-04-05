@@ -1,0 +1,33 @@
+body {
+    background-image: url("../img/fondoCel.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bold !important; 
+}
+
+p{
+    font-size: larger;
+    font-weight: bold !important;
+}
+
+.blanco {
+    color: white !important;
+}
+
+.mesa {
+    border:none;
+    box-shadow: 0px 3px 3px 3px rgba(92, 92, 92, 0.849);
+}
+
+@media  (min-width: 680px) {
+body {
+    background-image: url("../img/fondo_note.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
