@@ -5,7 +5,7 @@
     <title>Carga de Pedidos</title>
     <script> i=1;
         function addFields() { i++;
-            var dummy = '<input type="text" naem="CA'+i+'"><input type="text" name="CB'+i+'"><br>';
+            var dummy = '<input type="text" name="CA'+i+'"><input type="text" name="CB'+i+'"><br>';
             document.getElementById('wrapper').innerHTML += dummy;
         }
         function removeFields() { 
@@ -30,8 +30,8 @@
 
         <label for="detalle">detalle:</label>
         <button type="button" onclick="addFields()">+</button> <button type="button" onclick="removeFields()">-</button>
-        <div id="wrapper">
-            <input type="text" naem="CA1"><input type="text" name="CB1"><br>
+        <div id="wrapper"></div>
+            <input type="text" name="CA1"><input type="text" name="CB1"><br>
         </div>
         <br>
         
@@ -49,7 +49,7 @@
 
 
         <label for="cerrado">cerrado:</label>
-        <input type="date" id="cerrado" name="cerrado"><br>
+        <input type="text" id="cerrado" name="cerrado"><br>
 
         <label for="observacion">observacion:</label>
         <input type="text" id="observacion" name="observacion"><br><br><br>

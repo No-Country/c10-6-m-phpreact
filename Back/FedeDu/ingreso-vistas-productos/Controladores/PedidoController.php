@@ -11,9 +11,9 @@ class PedidoController {
             $i=0;
             while (true) { $i++;
                 if (isset($_POST["CA".$i])) {
-                    if (isset($_POST["CB".$i])) {
+                    //if (isset($_POST["CB".$i])) {
                         $detalle[$_POST["CA".$i]] = $_POST["CB".$i];
-                    }
+                    //}
                 }else{
                     break;
                 }
@@ -64,14 +64,15 @@ class PedidoController {
             $i=0;
             while (true) { $i++;
                 if (isset($_POST["CA".$i])) {
-                    if (isset($_POST["CB".$i])) {
-                        $detalle[$_POST["CA".$i]] = $_POST["CB".$i];
-                    }
+                    // if (isset($_POST["CB".$i])) { 
+                        $depost[$_POST["CA".$i]] = $_POST["CB".$i];
+                    // }
                 }else{
                     break;
                 }
             }
-            $detalle = json_encode($detalle);
+
+            $detalle = json_encode($depost);
 
             $importe_total = $_POST['importe_total'];
             $descuento = $_POST['descuento'];

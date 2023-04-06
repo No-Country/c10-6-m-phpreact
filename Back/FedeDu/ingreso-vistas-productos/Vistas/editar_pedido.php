@@ -48,7 +48,7 @@ $Pdetalle = json_decode($Pedido['detalle'], true);
         <input type="text" id="cliente" name="cliente" value="<?php echo $Pedido['cliente'] ?>"><br>
 
         <label for="cerrado">cerrado:</label>
-        <input type="date" id="cerrado" name="cerrado" value="<?php echo $Pedido['cerrado'] ?>"><br>
+        <input type="text" id="cerrado" name="cerrado" value="<?php echo $Pedido['cerrado'] ?>"><br>
 
         <label for="observacion">observacion:</label>
         <input type="text" id="observacion" name="observacion" value="<?php echo $Pedido['observacion'] ?>"><br><br><br>
@@ -63,17 +63,18 @@ $Pdetalle = json_decode($Pedido['detalle'], true);
 </body>
 </html>
 
-<script> i="<?php echo $i; ?>";
-        function addFields() { i++;
-            var dummy = '<input type="text" class="elemento" naem="CA'+i+'"><input type="text" class="elemento" name="CB'+i+'"><br>';
-            document.getElementById('wrapper').innerHTML += dummy;
-        }
-        function removeFields() { 
-            if (i == 1) {}else{ i--;
-                var elementos = document.querySelectorAll('.elemento');
-                for (var e = elementos.length - 1; e >= elementos.length - 2; e--) {
-                    elementos[e].remove();
-                }
+<script> 
+    i="<?php echo $i; ?>";
+    function addFields() { i++;
+        var dummy = '<input type="text" class="elemento" name="CA'+i+'"><input type="text" class="elemento" name="CB'+i+'"><br>';
+        document.getElementById('wrapper').innerHTML += dummy;
+    }
+    function removeFields() { 
+        if (i == 1) {}else{ i--;
+            var elementos = document.querySelectorAll('.elemento');
+            for (var e = elementos.length - 1; e >= elementos.length - 2; e--) {
+                elementos[e].remove();
             }
         }
+    }
 </script>
