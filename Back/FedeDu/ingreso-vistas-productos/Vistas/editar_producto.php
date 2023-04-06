@@ -13,7 +13,7 @@ $producto = $control->mostrar_producto($_GET['id']);
 </head>
 <body>
     <h1>Editar Producto</h1>
-    <form method="post" action="../Controladores/selector.php?accion=editar&id=<?php echo $producto['id'] ?>" enctype="multipart/form-data">
+    <form method="post" action="../Controladores/ProductoController.php?accion=editar&id=<?php echo $producto['id'] ?>" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre_producto" value="<?php echo $producto['nombre_producto'] ?>"><br>
 
