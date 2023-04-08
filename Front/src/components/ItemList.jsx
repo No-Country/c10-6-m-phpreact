@@ -13,9 +13,11 @@ export const ItemList = ()=>{
         useEffect(() => {
             try {
                 axios.get("http://localhost:3000/platos")
+                
             .then(res=>{
                 const data = res.data ;
                 setMenu(data)
+                console.log(data)
                 
             }
             ).catch(error =>{

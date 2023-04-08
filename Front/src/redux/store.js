@@ -28,6 +28,5 @@ export const store = configureStore({
     //     user: userReducer,
     //     order: orderReducer
     // },
-    reducer : persistedReducer
-    ,middleware:[thunk]
+    reducer : persistedReducer,middleware:[thunk]
 })
