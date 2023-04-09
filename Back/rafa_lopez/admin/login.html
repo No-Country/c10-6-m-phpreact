@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="  c10-6-m-phpreact" />
+    <title>Bar NO COUNTRY Admin Panel</title>
+    <link href="../../../admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../admin/css/signin.css" rel="stylesheet" />
+  </head>
+  <body class="text-center">
+    <div class="login">
+      <form name="form_login" method="post" action="./LOGIN/">
+        <img class="logo" src="../../../admin/assets/logo.png" />
+        <h1 class="h3 mb-3 font-weight-normal">Identifiquese</h1>
+        <label for="user" class="sr-only">Email</label>
+        <input
+          name="user"
+          type="email"
+          id="user"
+          class="form-control"
+          placeholder="Email"
+          required
+          autofocus
+        />
+        <label for="inputPassword" class="sr-only">Clave</label>
+        <input
+          name="pass"
+          type="password"
+          id="pass"
+          class="form-control"
+          placeholder="Clave"
+          required
+        />
+        <div class="checkbox mb-3">
+          <label>
+            <input hidden name="human" type="radio" value="true" checked />
+            <input name="ia" type="radio" value="false" /> Confirme si es IA
+            login
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          <!-- <input type="submit" value="Enviar" /> -->
+          Entrar
+        </button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2015-2023</p>
+      </form>
+    </div>
+  </body>
+</html>
