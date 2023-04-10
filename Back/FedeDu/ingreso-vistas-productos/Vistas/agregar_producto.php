@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Carga de Productos</h1>
-    <form action="../Controladores/selector.php?accion=agregar" method="post" enctype="multipart/form-data">
+    <form action="../Controladores/ProductoController.php?accion=agregar" method="post" enctype="multipart/form-data">
         <label for="nombre_producto">Nombre del Producto:</label>
         <input type="text" name="nombre_producto" id="nombre_producto" required><br><br>
 

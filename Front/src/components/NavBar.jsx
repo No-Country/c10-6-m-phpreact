@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Grid,IconButton,Button,Typography,Toolbar,Box,AppBar } from '@mui/material';
 
 
@@ -22,7 +22,7 @@ export const NavBar =  () => {
           <Button  color="inherit" sx={{}}>Login</Button>
 
         </Toolbar>
-
+          <NavLink to={'/orden'}>mi pedido!</NavLink>
       </AppBar>
     </Box>
     

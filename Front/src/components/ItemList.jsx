@@ -13,9 +13,11 @@ export const ItemList = ()=>{
         useEffect(() => {
             try {
                 axios.get("http://localhost:3000/platos")
+                
             .then(res=>{
                 const data = res.data ;
                 setMenu(data)
+                console.log(data)
                 
             }
             ).catch(error =>{
@@ -25,7 +27,10 @@ export const ItemList = ()=>{
             } catch (error) {
                 console.log(error.message)
             }
-        },[]);
+        },[]); //se podria hacer un dispacht aca ? abro hilo
+
+
+
         
         
     return(

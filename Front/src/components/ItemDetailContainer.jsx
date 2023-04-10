@@ -30,7 +30,6 @@ export const ItemDetailContainer = ()=>{
     }
 
     
-
     useEffect(() => {
        getPlato()
     }, []);
