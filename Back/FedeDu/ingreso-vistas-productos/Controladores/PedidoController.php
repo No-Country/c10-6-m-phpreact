@@ -7,30 +7,25 @@ class PedidoController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id_mesa = $_POST['mesa'];
 
-            //$detalle = $_POST['detalle']; //resivir y convertir a json
-            $i=0;
-            while (true) { $i++;
-                if (isset($_POST["CA".$i])) {
-                    //if (isset($_POST["CB".$i])) {
-                        $detalle[$_POST["CA".$i]] = $_POST["CB".$i];
-                    //}
-                }else{
-                    break;
-                }
-            }
-            $detalle = json_encode($detalle);
+            // $i=0;
+            // while (true) { $i++;
+            //     if (isset($_POST["CA".$i])) {
+            //             $detalle[$_POST["CA".$i]] = $_POST["CB".$i];
+            //     }else{
+            //         break;
+            //     }
+            // }
+            // $detalle = json_encode($detalle);
 
-            $importe_total = $_POST['importe_total'];
+            $producto = $_POST['producto'];
+            $cantidad = $_POST['cantidad'];
+            $precio = $_POST['precio'];
             $descuento = $_POST['descuento'];
             $estado = $_POST['estado'];
-            $cliente = $_POST['cliente'];
-            $cerrado = $_POST['cerrado'];
-            $observacion = $_POST['observacion'];
 
             $pedido_model = new PedidoModel();
             
-            $pedido_model->agregarPedido($id_mesa, $detalle, $importe_total, $descuento, $estado, $cliente
-            , $cerrado, $observacion);
+            $pedido_model->agregarPedido($id_mesa, $producto, $cantidad, $precio, $descuento, $estado);
             
             header('Location: ../Vistas/agregar_pedido.php');
             exit();
@@ -59,33 +54,27 @@ class PedidoController {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id_mesa = $_POST['mesa'];
 
-            //$detalle = $_POST['detalle'];//resivir y convertir a json
+            // $i=0;
+            // while (true) { $i++;
+            //     if (isset($_POST["CA".$i])) {
+            //             $depost[$_POST["CA".$i]] = $_POST["CB".$i];
+            //     }else{
+            //         break;
+            //     }
+            // }
+            // $detalle = json_encode($depost);
 
-            $i=0;
-            while (true) { $i++;
-                if (isset($_POST["CA".$i])) {
-                    // if (isset($_POST["CB".$i])) { 
-                        $depost[$_POST["CA".$i]] = $_POST["CB".$i];
-                    // }
-                }else{
-                    break;
-                }
-            }
-
-            $detalle = json_encode($depost);
-
-            $importe_total = $_POST['importe_total'];
+            $producto = $_POST['producto'];
+            $cantidad = $_POST['cantidad'];
+            $precio = $_POST['precio'];
             $descuento = $_POST['descuento'];
             $estado = $_POST['estado'];
-            $cliente = $_POST['cliente'];
-            $cerrado = $_POST['cerrado'];
-            $observacion = $_POST['observacion'];
 
 
             try {
                 $pedido_model = new PedidoModel();
                 
-                $pedido_model->actualizarPedido($id_pedido, $id_mesa, $detalle, $importe_total, $descuento, $estado, $cliente, $cerrado, $observacion);
+                $pedido_model->actualizarPedido($id_pedido, $id_mesa, $producto, $cantidad, $precio, $descuento, $estado);
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
                 return false;
