@@ -1,8 +1,15 @@
 <?php
-
-require_once '../Modelos/PedidoModel.php';
+require_once ('../Modelos/PedidoModel.php');
+//require_once '../../Mozo/Lib/mesaModel.php';
 
 class PedidoController {
+    //Creo una funcion privada para actualizar el estado de la mesa según los estados de los pedidos
+   /* private function actualizar_estado_mesa($id, $estado){
+        $mesas = new mesaModel();
+        $mesa = $mesas->obtenerMesa($id);
+        $mesas->actualizarMesa($id, $estado, $mesa['qr']);
+    }*/
+
     public function agregar_pedido() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id_mesa = $_POST['mesa'];
@@ -31,6 +38,10 @@ class PedidoController {
             
             $pedido_model->agregarPedido($id_mesa, $detalle, $importe_total, $descuento, $estado, $cliente
             , $cerrado, $observacion);
+            //Una vez agregado el pedido a la base de datos llamamos a la funcion para actualizar el estado de mesa y le pasamos un nuevo estado: 3:Pedido realizado a la id_mesa que trajo el pedido
+            /*if($estado==1){
+                self::actualizar_estado_mesa($id_mesa,3);
+            }*/
             
             header('Location: ../Vistas/agregar_pedido.php');
             exit();

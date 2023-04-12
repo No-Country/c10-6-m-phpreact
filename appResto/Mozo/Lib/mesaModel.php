@@ -6,6 +6,28 @@ class MesaModel{
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    public function verifica_estado_pedidos(){
+        $query = $this->pdo->prepare('SELECT * FROM pedidos WHERE NOT estado = 0');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function verifica_estado_pedidos_mesa($id_mesa){
+        $query = $this->pdo->prepare('SELECT * FROM pedidos WHERE NOT estado = 0 AND mesa = :mesa_id');
+        $query->bindParam(":mesa_id", $id_mesa);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function cambiarEstadoMesa($idMesa, $nuevo_estado) {
+        $sql = "UPDATE mesas SET estado_mesa = :estado WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':estado', $nuevo_estado);
+        $stmt->bindParam(':id', $idMesa);
+        return $stmt->execute();
+      }
+      
+
     public function insertarMesa($estado_mesa, $qr){
         $stmt = $this->pdo->prepare('INSERT INTO mesas (estado_mesa, qr) VALUES (:estado_mesa, :qr)');
         $stmt->bindParam(':estado_mesa', $estado_mesa);
