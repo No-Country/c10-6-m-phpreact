@@ -15,6 +15,7 @@ switch ($accion) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $mesas->cambiarEstadoMesa($id, 20);
+            $mesas->cambiarEstadoPedido($id, 0);
             header('Location: ../publico/servicio.php');
         } else {
             header('Location: ../publico/servicio.php');
@@ -29,10 +30,22 @@ switch ($accion) {
             header('Location: ../publico/servicio.php');
         }
         break;
+    case 'mesa':
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $mesas->obtenerMesa($id);
+            //header('Location: ../publico/servicio.php');
+        } else {
+            header('Location: ../publico/testservicio.php');
+        }
+        break;
     default://Establezco por defecto la verificación del estado de las mesas
         $mesas_disponibles = $mesas->obtenerMesas(); // función que retorna todas las mesas disponibles
         
         foreach ($mesas_disponibles as $mesa) {
+            if($mesa['estado_mesa']==23){
+                continue;
+            }
             $mesa_id = $mesa['id'];
             $lista_estados_pedidos = [];
             $pedidos = $mesas->verifica_estado_pedidos_mesa($mesa_id);
@@ -44,30 +57,14 @@ switch ($accion) {
 
             if (in_array(1, $lista_estados_pedidos)) {
                 $estado_mesa = 22;
-                continue;
             } elseif (in_array(2, $lista_estados_pedidos) || in_array(3, $lista_estados_pedidos)) {
                 $estado_mesa = 24;
-                continue;
+
             } elseif ((in_array(4, $lista_estados_pedidos) || in_array(5, $lista_estados_pedidos)) && !in_array(6, $lista_estados_pedidos)) {
                 $estado_mesa = 25;
-                continue;
-            }
-            /*
-            if ($estado_pedido == 1) {
-                $estado_mesa = 22;
-                break;
-            }//Si hay al menos un pedido en estado 1 (Activo y sin entregar) salteamos el resto del codigo
-        // Asignar estado 24 a la mesa si hay algún pedido en estado 2 o 3 y no hay en estado 1
-            if (($estado_pedido == 2 || $estado_pedido == 3) && $estado_mesa != 22) {
-                $estado_mesa = 24;
+                
             }
             
-            // Verificar si hay pedidos en estado 4 o 5 pero que no tenga pedidos en estado 6 y de ser así asignar estado 24 a la mesa
-            if (($estado_pedido == 4 || $estado_pedido == 5) && $estado_pedido != 6 && $estado_mesa != 22 && $estado_mesa != 24) {
-                $estado_mesa = 25;
-            }
-        //$mesas->cambiarEstadoMesa(3, 24);
-        } */
             if (!is_null($estado_mesa)) {
                 // Actualizar el estado de la mesa en la tabla 'mesa'
                 $mesas->cambiarEstadoMesa($mesa_id, $estado_mesa);
@@ -77,5 +74,28 @@ switch ($accion) {
         $mozo = $mesas->obtenerMesas();
         break;
 }
+
+function obtener_info_pedidos_productos($mesa_id) {
+    $mesas = new MesaModel;
+    // traigo los pedidos para la mesa:
+    $pedidos = $mesas->verifica_estado_pedidos_mesa($mesa_id);
+  
+    // declaro un array para almacenar la información de los productos:
+    $productos_info = array();
+  
+    // Recorremos los pedidos y obtenemos la información de los productos relacionados:
+    foreach ($pedidos as $pedido) {
+      $producto_id = $pedido['producto'];
+      $producto = $mesas->productos_pedidos_mesa($producto_id);
+      
+      // Agrego la información del producto asociado al pedido al array que creé antes:
+      $productos_info[] = array(
+        'producto_id' => $producto['id'],
+        'producto_nombre' => $producto['nombre_producto'],
+        'producto_precio' => $producto['precio']
+      );
+    }
+    return $productos_info;
+  }
 
 ?>

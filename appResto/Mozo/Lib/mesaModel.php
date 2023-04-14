@@ -19,13 +19,33 @@ class MesaModel{
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function cambiarEstadoMesa($idMesa, $nuevo_estado) {
+    public function cambiarEstadoMesa($idMesa, $nuevo_estado) {
         $sql = "UPDATE mesas SET estado_mesa = :estado WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':estado', $nuevo_estado);
-        $stmt->bindParam(':id', $idMesa);
-        return $stmt->execute();
+        $query = $this->pdo->prepare($sql);
+        $query->bindParam(':estado', $nuevo_estado);
+        $query->bindParam(':id', $idMesa);
+        return $query->execute();
       }
+
+    public function cambiarEstadoPedido($idMesa, $nuevo_estado) {
+        $pedidos = self::verifica_estado_pedidos_mesa($idMesa);
+        foreach ($pedidos as $pedido) {
+            $sql = "UPDATE pedidos SET estado = :estado WHERE id = :id";
+            $query = $this->pdo->prepare($sql);
+            $query->bindParam(':estado', $nuevo_estado);
+            $query->bindParam(':id', $pedido['id']);
+            $query->execute();
+        }
+        return true;
+    }
+    
+    public function productos_pedidos_mesa($producto_id) {
+        $sql = "SELECT * FROM productos WHERE id = :producto_id";
+        $query = $this->pdo->prepare($sql);
+        $query->bindParam(':producto_id', $producto_id, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
       
 
     public function insertarMesa($estado_mesa, $qr){
