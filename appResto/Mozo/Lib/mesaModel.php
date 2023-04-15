@@ -46,6 +46,15 @@ class MesaModel{
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function cambiarEstadoProductoMesa($id_pedido, $nuevo_estado) {
+        $sql = "UPDATE pedidos SET estado = :estado WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->bindParam(':estado', $nuevo_estado);
+        $query->bindParam(':id', $id_pedido);
+        $query->execute();
+        return true;
+    }
       
 
     public function insertarMesa($estado_mesa, $qr){

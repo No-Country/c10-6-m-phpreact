@@ -39,6 +39,14 @@ switch ($accion) {
             header('Location: ../publico/testservicio.php');
         }
         break;
+        case 'entregado':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $mesa = $_GET['idmesa'];
+                $mesas->cambiarEstadoProductoMesa($id, 2);
+                header('Location: ../publico/servicio.php?mesa='.$mesa);
+            }
+            break;
     default://Establezco por defecto la verificación del estado de las mesas
         $mesas_disponibles = $mesas->obtenerMesas(); // función que retorna todas las mesas disponibles
         
@@ -85,14 +93,18 @@ function obtener_info_pedidos_productos($mesa_id) {
   
     // Recorremos los pedidos y obtenemos la información de los productos relacionados:
     foreach ($pedidos as $pedido) {
+      $pedido_id = $pedido['id'];
       $producto_id = $pedido['producto'];
+      $estado_pedido = $pedido['estado'];
       $producto = $mesas->productos_pedidos_mesa($producto_id);
       
       // Agrego la información del producto asociado al pedido al array que creé antes:
       $productos_info[] = array(
         'producto_id' => $producto['id'],
         'producto_nombre' => $producto['nombre_producto'],
-        'producto_precio' => $producto['precio']
+        'producto_precio' => $producto['precio'],
+        'pedido-estado' => $estado_pedido,
+        'pedido-id' => $pedido_id
       );
     }
     return $productos_info;
