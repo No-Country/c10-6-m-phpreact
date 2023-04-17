@@ -16,8 +16,11 @@ $productos = $bd->mostrar_productos();
 	<div class="container">
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-		<h1 class="text-danger fw-bold">Lista de productos</h1>
+		<h1 class="text-danger fw-bold">Lista de productos</h1>		
 		<a href="agregar_producto.php" class="btn btn-outline-success">Agregar un nuevo producto</a>
+		<button class="btn btn-info">
+      		<a href="../../admin.php" class="btn btn-info">Volver</a>
+		</button>
 		</div>
 	</nav>
 		<div>

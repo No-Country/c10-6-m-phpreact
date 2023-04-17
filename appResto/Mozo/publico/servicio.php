@@ -130,7 +130,7 @@ require_once('../Lib/controlMesa.php');
                   <tbody>
                     <?php
                     $pedidos = obtener_info_pedidos_productos($mesa['id']);
-                    
+                    $total = 0;
                     foreach ($pedidos as $pedido) {
                       switch($pedido['pedido-estado']) {
                         case 1:
@@ -169,14 +169,24 @@ require_once('../Lib/controlMesa.php');
                           </td>
                           <?php
                           break;
-                      }
-                    ?>
-                   
+                      } ?>
                       </tr>
-                    
-                    
-                    <?php  } ?>
+                    <?php  
+                    $total += $pedido['producto_precio'];
+                  } ?>
                   </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3">
+                        Detalle: asdasda asd asda asd a a sdasd asda sdasdas da sd a da sdasda asd
+                        sadasd asd as da sd a da sda sadas
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">Total:</td>
+                      <td class="fw-bold fs-3 align-middle"><?php echo '$'.$total; ?></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
