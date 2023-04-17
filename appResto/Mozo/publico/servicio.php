@@ -42,50 +42,82 @@ require_once('../Lib/controlMesa.php');
 
                     //establecemos los posibles estados de las mesas y segun el estado lo que debe mostrar
                     if ($mesa['estado_mesa'] == 23) { ?>
-                      <div>
-                      <form method="GET" action="../lib/controlMesa.php" onsubmit="return confirm('¿se atendió la mesa?')">
+                    <div class="">
+                    <form method="GET" action="../lib/controlMesa.php" onsubmit="return confirm('¿se atendió la mesa?')">
                                 <input type="hidden" name="accion" value="servido">
                                 <input type="hidden" name="id" value="<?php echo $mesa['id']; ?>">
-                        <button href="../lib/controlMesa.php?accion=servido&id=<?php echo $mesa['id']; ?>" class="btn btn-info bg-gradient h-100 w-100 mesa">
-                          <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                          <p class="card-text ">Requiere Servicio</p>
-                          <p class="card-text ">Tocar para asentar servicio</p>
+                      <div class="contenedor_circulo">
+                        <button tipe="submit" href="../lib/controlMesa.php?accion=servido&id=<?php echo $mesa['id']; ?>" class="h-100 mesaRedonda" id="<?php echo $mesa['id']; ?>">
+                          <img src="img/Mesa_Amarilla.png" alt="mesa amarilla">
+                          <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
                         </button>
+                      </div>
+                      <p class="card-text text-center blanco">Requiere Servicio</p>
+                      <p class="card-text ">Tocar para asentar servicio</p>
                       </form>
                           <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn bg-warning bg-gradient h-100 w-100 mt-1 negrita" id="<?php echo $mesa['id'] . "-link"; ?>">Ver Pedido</a>
-                      </div>
+                    </div>
                     <?php
                     } elseif ($mesa['estado_mesa'] == 20) {
                     ?>
-                      <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn btn-light bg-gradient h-100 w-100 mesa" id="<?php echo $mesa['id'] . "-link"; ?>">
-                        <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                        <p class="card-text ">Mesa Libre</p></a> <?php
-                                                            } elseif ($mesa['estado_mesa'] == 21) {
-                                                              ?>
-                        <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn btn-warning bg-gradient h-100 w-100 mesa" id="<?php echo $mesa['id'] . "-link"; ?>">
-                          <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                          <p class="card-text ">Mesa Ocupada</p></a> <?php
-                                                                } elseif ($mesa['estado_mesa'] == 22) {
-                                                                  ?>
-                          <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn btn-danger bg-gradient h-100 w-100 mesa" id="<?php echo $mesa['id'] . "-link"; ?>">
-                            <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                            <p class="card-text ">Pedido Realizado</p></a> <?php
-                                                                      } elseif ($mesa['estado_mesa'] == 24) {
-                                                                        ?>
-                            <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn btn-secondary bg-gradient h-100 w-100 mesa" id="<?php echo $mesa['id'] . "-link"; ?>">
-                              <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                              <p class="card-text ">Sin Pedidos Pendientes</p> </a><?php
-                                                                              } elseif ($mesa['estado_mesa'] == 25) {
-                                                                                ?>
-                            <div>
-                              <form method="GET" action="../lib/controlMesa.php?accion=cerrar&id=<?php echo $mesa['id']; ?>" onsubmit="return confirm('¿Está seguro de cerrar la mesa?')">
+                      <div class="">
+                        <div class="contenedor_circulo">
+                          <button href="#" class="h-100 mesaRedonda" id="<?php echo $mesa['id'] . "-link"; ?>" onclick="alert('Esta mesa está libre, no hay pedidos.')">
+                            <img src="img/Mesa_Blanca.png" alt="mesa blanca">
+                            <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
+                          </button>
+                        </div>
+                        <p class="card-text text-center blanco">Mesa Libre</p>
+                      </div>
+                         <?php
+                        } elseif ($mesa['estado_mesa'] == 21) { ?>
+                    <div class="">
+                      <div class="contenedor_circulo">
+                        <button href="#" class="h-100 mesaRedonda" id="<?php echo $mesa['id']; ?>" onclick="alert('Esta mesa está ocupada pero no se han realizado pedidos aún.')">
+                          <img src="img/Mesa_Rosa.png" alt="mesa rosa">
+                          <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
+                        </button>
+                      </div>
+                      <p class="card-text text-center blanco">Mesa Ocupada</p>
+                    </div>
+             <?php } elseif ($mesa['estado_mesa'] == 22) { ?>
+                    <div class="">
+                      <div class="contenedor_circulo">
+                        <a href="<?php echo '?mesa=' . $mesa['id']; ?>">
+                          <button class="h-100 mesaRedonda" id="<?php echo $mesa['id'] . "-link"; ?>">
+                            <img src="img/Mesa_Roja.png" alt="mesa blanca">
+                            <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
+                          </button>
+                        </a>
+                      </div>
+                      <p class="card-text text-center blanco">Pedido Realizado</p>
+                    </div>
+                            <?php } elseif ($mesa['estado_mesa'] == 24) { ?>
+                            <div class="">
+                              <div class="contenedor_circulo">
+                                <a href="<?php echo '?mesa=' . $mesa['id']; ?>">
+                                  <button href="" class="h-100 mesaRedonda" id="<?php echo $mesa['id']; ?>">
+                                    <img src="img/Mesa_Gris.png" alt="mesa gris">
+                                    <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
+                                  </button>
+                                </a>
+                              </div>
+                              <p class="card-text text-center blanco">Sin Pendientes</p>
+                            </div>
+                              <?php } elseif ($mesa['estado_mesa'] == 25) { ?>
+                                <div class="">
+                                <form method="GET" action="../lib/controlMesa.php?accion=cerrar&id=<?php echo $mesa['id']; ?>" onsubmit="return confirm('¿Está seguro de cerrar la mesa?')">
                                 <input type="hidden" name="accion" value="cerrar">
                                 <input type="hidden" name="id" value="<?php echo $mesa['id']; ?>">
-                                <button type="submit" class="btn btn-success bg-gradient h-100 w-100 mesa" id="cerrar">
-                                  <h5 class="card-title border border-1 bg-danger-subtle bg-gradient blanco"><?php echo $mesa['id']; ?></h5>
-                                  <p class="card-text ">Cobrada <?php echo $mesa['estado_mesa']; ?></p>
-                                  <p class="card-text ">Tocar para Cerrar</p>
-                                </button>
+                                <div class="">
+                                <div class="contenedor_circulo">
+                                    <button type="submit" href="" class="h-100 mesaRedonda" id="<?php echo $mesa['id']; ?>">
+                                      <img src="img/Mesa_Verde.png" alt="mesa verde">
+                                      <p class="numero-mesa"><?php echo $mesa['id']; ?></p>
+                                    </button>
+                                </div>
+                                <p class="card-text text-center blanco">Mesa Cobrada</p>
+                              </div>
                               </form>
                               <a href="<?php echo '?mesa=' . $mesa['id']; ?>" class="btn bg-warning bg-gradient h-100 w-100 mt-1 negrita" id="<?php echo $mesa['id'] . "-link"; ?>">Ver Pedido</a>
                             </div>

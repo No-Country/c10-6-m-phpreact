@@ -37,6 +37,7 @@ if (isset($_GET['mesa'])) {
                 <tbody>
                     <?php
                     foreach ($pedidos as $pedido) {
+                        $pendiente = false;
                         switch($pedido['pedido-estado']) {
                         case 1:
                             ?>
@@ -44,11 +45,12 @@ if (isset($_GET['mesa'])) {
                             <td scope="col" class="col-6 text-center"><?php echo $pedido['producto_nombre']; ?></td>
                             <td scope="col" class="col-3 text-center"><?php echo '$' . $pedido['producto_precio'];?></td>
                             <td scope="col" class="col-3 text-center">
-                                <a scope="col" href="../lib/controlMesa.php?accion=entregado&id=<?php echo $pedido['pedido-id']; ?>&idmesa=<?php echo $mesa; ?>" class="btn btn-success mt-1 mb-1">
+                                <a scope="col" href="#" class="btn btn-success mt-1 mb-1">
                                     Entregar
                                 </a>
                             </td>
                             <?php
+                            $pendiente = true;
                             break;
                         case 2:
                             ?>
@@ -56,7 +58,7 @@ if (isset($_GET['mesa'])) {
                             <td scope="col" class="col-6 text-center"><?php echo $pedido['producto_nombre']; ?></td>
                             <td scope="col" class="col-3 text-center"><?php echo '$' . $pedido['producto_precio'];?></td>
                             <td scope="col" class="col-3 text-center">
-                                <a scope="col" href="../lib/controlMesa.php?accion=entregado&id=<?php echo $pedido['pedido-id']; ?>&idmesa=<?php echo $mesa; ?>" class="btn btn-success mt-1 mb-1">
+                                <a scope="col" href="#" class="btn">
                                     Entregado
                                 </a>
                             </td>
@@ -106,7 +108,11 @@ if (isset($_GET['mesa'])) {
                 </tfoot>
             </table>
             <div class="col-2">
+                <?php if ($pendiente) { ?>
+                    <a href="#" class="btn btn-dark w-100 h-100 d-flex align-items-center"><p class="">MESA CON PENDIENTES DE ENTREGAR</p></a>
+           <?php } else { ?>
                 <a href="../lib/controlMesa.php?accion=cobrar&idmesa=<?php echo $mesa; ?>" class="btn btn-success w-100 h-100 d-flex align-items-center"><p class="">COBRAR MESA</p></a>
+            <?php } ?>
             </div>
         </div>
     </div>
