@@ -146,7 +146,7 @@ require_once('../Lib/controlMesa.php');
         }
       ?>
 
-        <aside class="col-5 <?php echo $visible; ?>" id="<?php echo '#' . $mesa['id'] . '-aside'; ?>">
+        <aside class="col-5 <?php echo $visible; ?>" id="<?php echo $mesa['id']; ?>">
           <div class="card border-danger mb-3 border border-danger border-1 rounded-5 rounded-top-0 mt-1 align-midle">
             <div class="card-header bg-danger blanco text-center">Pedidos Mesa <?php echo $mesa['id']; ?></div>
             <div class="card-body">
@@ -163,6 +163,7 @@ require_once('../Lib/controlMesa.php');
                     <?php
                     $pedidos = obtener_info_pedidos_productos($mesa['id']);
                     $total = 0;
+                    $observacion = [];
                     foreach ($pedidos as $pedido) {
                       switch($pedido['pedido-estado']) {
                         case 1:
@@ -205,13 +206,18 @@ require_once('../Lib/controlMesa.php');
                       </tr>
                     <?php  
                     $total += $pedido['producto_precio'];
-                  } ?>
+                    if ($pedido['producto_observacion'] != '') {
+                      array_push($observacion,$pedido['producto_nombre'] . ': ' . strtoupper($pedido['producto_observacion']));
+                    }
+                    
+                  } 
+                  $observaciones_mesa = implode(" - - ", $observacion);
+                  ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="3">
-                        Detalle: asdasda asd asda asd a a sdasd asda sdasdas da sd a da sdasda asd
-                        sadasd asd as da sd a da sda sadas
+                        <?php echo $observaciones_mesa; ?>
                       </td>
                     </tr>
                     <tr>
@@ -232,7 +238,7 @@ require_once('../Lib/controlMesa.php');
   <script>
     setInterval(function() {
       location.reload();
-    }, 20000); // 5000 milisegundos = 5 segundos
+    }, 15000); // 5000 milisegundos = 5 segundos
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
   </script>

@@ -36,6 +36,7 @@ if (isset($_GET['mesa'])) {
                 </thead>
                 <tbody>
                     <?php
+                    $observacion = [];
                     foreach ($pedidos as $pedido) {
                         $pendiente = false;
                         switch($pedido['pedido-estado']) {
@@ -92,13 +93,17 @@ if (isset($_GET['mesa'])) {
                     </tr>
                 <?php  
                 $total += $pedido['producto_precio'];
-                } ?>
+                if ($pedido['producto_observacion'] != '') {
+                    array_push($observacion,$pedido['producto_nombre'] . ': ' . strtoupper($pedido['producto_observacion']));
+                  }
+                }
+                $observaciones_mesa = implode(" - - ", $observacion);
+                 ?>
                 </tbody>
                 <tfoot>
                 <tr>
                     <td colspan="3">
-                    Detalle: asdasda asd asda asd a a sdasd asda sdasdas da sd a da sdasda asd
-                    sadasd asd as da sd a da sda sadas
+                    <?php echo $observaciones_mesa; ?>
                     </td>
                 </tr>
                 <tr>
