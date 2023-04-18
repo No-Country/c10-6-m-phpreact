@@ -8,7 +8,7 @@ $productos = $bd->mostrar_productos();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Productor</title>
+	<title>Lista de Productos</title>
 	<link rel="stylesheet" href="css/estilos.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -16,8 +16,11 @@ $productos = $bd->mostrar_productos();
 	<div class="container">
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-		<h1 class="text-danger fw-bold">Lista de productos</h1>
+		<h1 class="text-danger fw-bold">Lista de productos</h1>		
 		<a href="agregar_producto.php" class="btn btn-outline-success">Agregar un nuevo producto</a>
+		<button class="btn btn-info">
+      		<a href="../../admin.php" class="btn btn-info">Volver</a>
+		</button>
 		</div>
 	</nav>
 		<div>

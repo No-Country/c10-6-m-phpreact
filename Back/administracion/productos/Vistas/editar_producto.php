@@ -46,11 +46,14 @@ $producto = $control->mostrar_producto($_GET['id']);
         <label for="imagen" class="form-label">Imagen:</label>
         <input type="hidden" name="imagen_vieja" value="<?php echo $producto['imagen']; ?>" class="form-control">
         <?php if ($producto['imagen']): ?>
-            <img src="<?php echo $producto['imagen'] ?>" alt="Imagen original del producto"><br>
+            <img src="<?php echo $producto['imagen'] ?>" alt="Imagen original del producto" class="img-fluid img-thumbnail w-25"><br>
         <?php else: ?>
             <p>No se ha cargado ninguna imagen</p><br>
         <?php endif; ?>
-        <input type="file" name="imagen" id="imagen"><br>
+        <div>
+            <label for="imagen" class="form-label">Imagen Nueva:</label>
+            <input type="file" name="imagen" id="imagen" class="img-fluid img-thumbnail mt-2"><br>
+        </div>
     </div>
     <div class="mt-2">
         <input type="submit" value="Guardar Cambios" class="btn btn-outline-success">
