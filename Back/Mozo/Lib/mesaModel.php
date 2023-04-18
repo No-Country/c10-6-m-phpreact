@@ -13,7 +13,7 @@ class MesaModel{
     }
 
     public function verifica_estado_pedidos_mesa($id_mesa){
-        $query = $this->pdo->prepare('SELECT * FROM pedidos WHERE NOT estado = 0 AND mesa = :mesa_id');
+        $query = $this->pdo->prepare('SELECT * FROM pedidos WHERE NOT estado = 0 AND mesa = :mesa_id ORDER BY estado ASC');
         $query->bindParam(":mesa_id", $id_mesa);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);

@@ -57,9 +57,9 @@ class MesaModel{
     }
       
 
-    public function insertarMesa($estado_mesa, $qr){
+    public function insertarMesa($qr){
         $stmt = $this->pdo->prepare('INSERT INTO mesas (estado_mesa, qr) VALUES (:estado_mesa, :qr)');
-        $stmt->bindParam(':estado_mesa', $estado_mesa);
+        $stmt->bindParam(':estado_mesa', 20);
         $stmt->bindParam(':qr', $qr);
         $stmt->execute();
         return $this->pdo->lastInsertId();
