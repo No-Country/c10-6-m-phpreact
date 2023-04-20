@@ -6,7 +6,7 @@ body {
 
 h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: white;
+    color: rgb(189, 24, 24)!important;
     font-weight: bold !important; 
 }
 
@@ -14,6 +14,7 @@ p{
     font-size: larger;
     font-weight: bold !important;
 }
+
 
 .blanco {
     color: white !important;
