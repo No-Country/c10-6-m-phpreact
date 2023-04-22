@@ -1,6 +1,6 @@
 
 import { Paper,Button } from "@mui/material";
-
+import "../css/carousel.css"
 
 
 
@@ -9,11 +9,8 @@ export const CarouselItem = ({name,description,image})=>{
 
     return (
         <Paper>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <img src={image} alt="foodimage" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
-
-            <Button className="CheckButton">
+            <img src={image} alt="foodimage" className="carouselImage"/>
+            <Button  className="carouselButton " >
                 Check it out!
             </Button>
         </Paper>

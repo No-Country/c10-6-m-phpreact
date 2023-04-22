@@ -1,37 +1,38 @@
 
+import "../css/listado.css"
 import { Card,CardMedia,CardContent,Typography,CardActions } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { ItemDetailContainer } from "./ItemDetailContainer";
 
 
 
-export const Item = ({nombre,id,descripcion,precio})=>{
+export const Item = ({nombre_producto,id,descripcion,precio})=>{
     
 
 
     return(
         <>
-            <Card  sx={{ maxWidth: 345 , margin:"2%",  }}>
-                    <CardMedia
-                    sx={{ height: 140 }}
-                    title={nombre}
-                    image=""
-                    />
-                    <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    {nombre}
+        <NavLink   style={{textDecoration:"none"}}  to={`/plato/${id}`} >
+            <Card  className="cardList" >
+                    
+                    <img className="imgCard " src="https://a.storyblok.com/f/112937/568x400/a04eeea72a/15_things_to_eat_in_australia-568x400.jpg/m/620x0/filters:quality(70)/" alt="" />
+                    <CardContent className="cardContent-flex">
+                    <Typography className="pCard" gutterBottom variant="h5" color="white" component="div">
+                    {nombre_producto}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    {/* <Typography variant="body2" color="white">
                         {descripcion}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Precio: {precio}
-                    </Typography>
+                    </Typography> */}
+                    
+                        <CardActions className="priceCard">
+                            <Typography className="pCard " variant="body2" color="white">
+                                {precio}
+                            </Typography>
+                        </CardActions>
+                    
                     </CardContent>
-                    <CardActions>
-                        <NavLink to={`/plato/${id}`} >ver plato </NavLink> 
-                    </CardActions>
             </Card>
+            </NavLink> 
         </>
     )
 }

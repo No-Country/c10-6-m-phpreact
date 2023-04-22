@@ -1,10 +1,10 @@
 
-import { Container } from '@mui/system';
+import { Container,Box } from '@mui/system';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { CarouselItem } from './CarouselItem';
-
-
+import "../css/carousel.css"
+import mozoimg from "../assets/Mozo.png"
 
 export const HomeCarousel = (props)=>{
 
@@ -24,13 +24,23 @@ export const HomeCarousel = (props)=>{
     //hardcode :)
 
     return (
-        <Container>
+        <Box className="carouselContainer">
+
+            <Box className="mozoCall">
+                <h5>¿alguna duda?</h5>
+                <h1>llamar mozo</h1>
+                <img className='mozo-img'   src={mozoimg} alt="" />
+                
+            </Box>
+        
             <Carousel>
                 {
                     items.map( (item) => <CarouselItem key={item.id} {...item} /> )
                 }
             </Carousel>
-        </Container>
+            
+        </Box>    
+       
     )
 }
 

@@ -56,14 +56,34 @@ export const orderSlice = createSlice({
         state.totalCount += cantidad;
         state.productList[index].cantidad += cantidad;
       }
+      console.log(current(state.productList))
     },
+  
     
     removeFromOrder : (state,action)=>{
-      const{ id , cantidad}= action.payload;
-      const newArr = state.productList.filter(e => e.id !== id);
-      state.productList = newArr;
-     state.totalCount -= cantidad;
+      const {id,cantidad}= action.payload;
+      let item = state.productList.find((e)=>e.id === id) 
+
+      if (item) {
+        state.totalCount -= cantidad;
+        state.productList= state.productList.filter(e => e.id !== id);
+      }
+
+      // if (state.productList.some(e=>e.id===id)) {
+
+      //   const newArr = 
+      //   state.productList = newArr;
+       
+      //   console.log("entra en el if")
+
+      // }
+  
     },
+
+    removeAllfromOrder : (state,action)=>{
+      state.totalCount=0
+      state.productList = []
+    }
 
 
 
@@ -76,7 +96,7 @@ export const orderSlice = createSlice({
 
 
 
-export const { addToOrder,removeFromOrder } = orderSlice.actions  
+export const { addToOrder,removeFromOrder,removeAllfromOrder } = orderSlice.actions  
 
 export default orderSlice.reducer
 

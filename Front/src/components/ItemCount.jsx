@@ -1,6 +1,6 @@
-import { Button } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 import { useState } from "react"
-
+import "../css/counter.css"
 
 
 
@@ -23,11 +23,14 @@ export const ItemCount = ({onAdd})=>{
 
 
     return(
-        <>
-                <Button onClick={()=>{decrementar()}}>-</Button>              
-                    <span>{counter}</span>
-                <Button onClick={()=>{incrementar()}}>+</Button>
-            {counter >0 && <Button  className="col-md-4 addToCartButton"  onClick={()=>onAdd(counter)} variant="secondary">Agregar a tu pedido</Button> }
-        </>
+        <div  >
+            <div className="counter-container">
+                <button className="counter-btn" onClick={()=>{decrementar()}}>-</button>              
+                <span>{counter}</span>
+                <button className="counter-btn" onClick={()=>{incrementar()}}>+</button>
+            </div>
+           
+            {counter > 0 && <button  className=" addToOrderButton"  onClick={()=>onAdd(counter)} variant="secondary"> <Typography className="addToOrderButton-text" >Agregar a tu pedido</Typography> </button> }
+        </div>
     )
 }
