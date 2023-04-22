@@ -16,9 +16,9 @@ if (ENTORNO_LOCAL) {
     if (!defined('DEV')) {
         define('DEV', true);
         define('SERVER', 'localhost');
-        define('USER', 'id20149440_nocountry');
-        define('PASS', '*d^xGv5?w~W4r$e>');
-        define('DB', 'id20149440_resto');
+        define('USER', '');
+        define('PASS', '');
+        define('DB', '');
         ini_set('display_errors', 1);
         define('ROOT', '/api/');
         session_start();
