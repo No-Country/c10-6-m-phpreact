@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Carga de Pedidos</title>
-    <script> i=1;
+    <!-- <script> i=1;
         function addFields() { i++;
             var dummy = '<input type="text" name="CA'+i+'"><input type="text" name="CB'+i+'"><br>';
             document.getElementById('wrapper').innerHTML += dummy;
@@ -19,7 +19,7 @@
                 }
             }
         }
-    </script>
+    </script> -->
 </head>
 <body>
     <h1>Carga de Pedidos</h1>
@@ -28,31 +28,27 @@
         <label for="mesa">mesa:</label>
         <input type="number" id="mesa" name="mesa"><br>
 
-        <label for="detalle">detalle:</label>
+        <!-- <label for="detalle">detalle:</label>
         <button type="button" onclick="addFields()">+</button> <button type="button" onclick="removeFields()">-</button>
         <div id="wrapper"></div>
             <input type="text" name="CA1"><input type="text" name="CB1"><br>
         </div>
-        <br>
+        <br> -->
         
-        <label for="importe_total">importe_total:</label>
-        <input type="number" id="importe_total" name="importe_total"><br>
+        <label for="producto">producto:</label>
+        <input type="number" id="producto" name="producto"><br>
+
+        <label for="cantidad">cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad"><br>
+
+        <label for="precio">precio:</label>
+        <input type="number" id="precio" name="precio"><br>
 
         <label for="descuento">descuento:</label>
         <input type="number" id="descuento" name="descuento"><br>
 
         <label for="estado">estado:</label>
         <input type="number" id="estado" name="estado"><br>
-
-        <label for="cliente">cliente:</label>
-        <input type="text" id="cliente" name="cliente"><br>
-
-
-        <label for="cerrado">cerrado:</label>
-        <input type="text" id="cerrado" name="cerrado"><br>
-
-        <label for="observacion">observacion:</label>
-        <input type="text" id="observacion" name="observacion"><br><br><br>
 
         <input type="submit" value="Cargar Pedido">
     </form>

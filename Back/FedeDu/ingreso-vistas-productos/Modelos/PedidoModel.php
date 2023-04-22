@@ -20,19 +20,17 @@ class PedidoModel {
         }
     }
 
-    public function agregarPedido($id_mesa, $detalle, $importe_total, $descuento, $estado, $cliente, $cerrado, $observacion) {
+    public function agregarPedido($id_mesa, $producto, $cantidad, $precio, $descuento, $estado) {
 
-        $query = $this->db->prepare('INSERT INTO pedidos (id, mesa, detalle, importe_total, descuento, estado, cliente, creado, cerrado ,observacion) VALUES (DEFAULT, :mesa, :detalle, :importe_total, :descuento, :estado, :cliente, NOW(), :cerrado, :observacion)');
+        $query = $this->db->prepare('INSERT INTO pedidos (id, mesa, producto, cantidad, precio, descuento, estado, creado, modificado) VALUES (DEFAULT, :mesa, :producto, :cantidad, :precio, :descuento, :estado, NOW(), NOW())');
 
         
         $query->bindParam(':mesa', $id_mesa);
-        $query->bindParam(':detalle', $detalle);
-        $query->bindParam(':importe_total', $importe_total);
+        $query->bindParam(':producto', $producto);
+        $query->bindParam(':cantidad', $cantidad);
+        $query->bindParam(':precio', $precio);
         $query->bindParam(':descuento', $descuento);
         $query->bindParam(':estado', $estado);
-        $query->bindParam(':cliente', $cliente);
-        $query->bindParam(':cerrado', $cerrado);
-        $query->bindParam(':observacion', $observacion);
 
         return $query->execute();
     }
@@ -56,20 +54,17 @@ class PedidoModel {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizarPedido($id_pedido, $id_mesa, $detalle, $importe_total, $descuento, $estado, $cliente
-    , $cerrado, $observacion) {
-        try {
-            $sql = "UPDATE pedidos SET mesa = :mesa, detalle = :detalle, importe_total = :importe_total, descuento = :descuento, estado = :estado, cliente = :cliente, cerrado = :cerrado, observacion = :observacion WHERE id = :id";
+    public function actualizarPedido($id_pedido, $id_mesa, $producto, $cantidad, $precio, $descuento, $estado) {
+        try { //NOW()
+            $sql = "UPDATE pedidos SET mesa = :mesa, producto = :producto, cantidad = :cantidad, precio = :precio, descuento = :descuento, estado = :estado, modificado = NOW() WHERE id = :id";
             $query = $this->db->prepare($sql);
             $query->bindParam(':id', $id_pedido);
             $query->bindParam(':mesa', $id_mesa);
-            $query->bindParam(':detalle', $detalle);
-            $query->bindParam(':importe_total', $importe_total);
+            $query->bindParam(':producto', $producto);
+            $query->bindParam(':cantidad', $cantidad);
+            $query->bindParam(':precio', $precio);
             $query->bindParam(':descuento', $descuento);
             $query->bindParam(':estado', $estado);
-            $query->bindParam(':cliente', $cliente);
-            $query->bindParam(':cerrado', $cerrado);
-            $query->bindParam(':observacion', $observacion);
             $query->execute();
             return true;
         } catch (PDOException $e) {

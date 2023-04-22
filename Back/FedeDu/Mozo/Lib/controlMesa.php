@@ -20,25 +20,7 @@ switch ($accion) {
         } else {
             header('Location: ../publico/servicio.php');
         }
-        break;/*
-    case 'agregar':
-        //Ejecutamos el controlador de agregar producto cuando recibimos el formulario
-        $control->agregar_producto();
         break;
-    case 'mostrar':
-        //mostramos un producto en particular y para esto el GET tiene que venir tanto con el valor del accion como con el id del producto que desean que muestre: ?accion=mostrarid&id=<id_producto>
-        $control->mostrar_productos();
-        break;
-    case 'editar':
-        //mostramos un producto en particular y para esto el GET tiene que venir tanto con el valor del accion como con el id del producto que desean que muestre: ?accion=mostrarid&id=<id_producto>
-        $control->editar_producto($_GET['id']);
-        break;
-    case 'borrar':
-        //mostramos un producto en particular y para esto el GET tiene que venir tanto con el valor del accion como con el id del producto que desean que muestre: ?accion=mostrarid&id=<id_producto>
-        $control->borrar_producto($_GET['id']);
-        break;*/
-
-    //Dejamos por defecto la vista del menú
     default:
         header('Location: ../publico/servicio.php');    
         break;

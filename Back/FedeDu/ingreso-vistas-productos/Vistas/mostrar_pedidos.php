@@ -10,26 +10,24 @@ $pedidos = $bd->mostrar_pedidos();
 	<table>
 		<tr>
 			<th>Id de mesa</th>
-			<th>Detalle</th>
-			<th>Importe total</th>
+			<th>Producto</th>
+			<th>Cantidad</th>
+			<th>Precio</th>
 			<th>Descuento</th>
 			<th>Estado</th>
-			<th>Nombre de cliente</th>
             <th>Fecha creacion</th>
-            <th>Fecha cerrado</th>
-			<th>Obsercacion</th>
+            <th>Fecha modificacion</th>
 		</tr>
 		<?php foreach ($pedidos as $pedido): ?>
 			<tr>
 				<td><?php echo $pedido['mesa']; ?></td>
-				<td><?php echo $pedido['detalle']; ?></td>
-				<td><?php echo $pedido['importe_total']; ?></td>
+				<td><?php echo $pedido['producto']; ?></td>
+				<td><?php echo $pedido['cantidad']; ?></td>
+				<td><?php echo $pedido['precio']; ?></td>
 				<td><?php echo $pedido['descuento']; ?></td>
-				<td><?php echo $pedido['estado']; ?></td>				
-				<td><?php echo $pedido['cliente']; ?></td>				
-				<td><?php echo $pedido['creado']; ?></td>				
-				<td><?php echo $pedido['cerrado']; ?></td>				
-				<td><?php echo $pedido['observacion']; ?></td>				
+				<td><?php echo $pedido['estado']; ?></td>
+				<td><?php echo $pedido['creado']; ?></td>
+				<td><?php echo $pedido['modificado']; ?></td>
 				<td>
 					<a href="<?php echo 'editar_pedido.php?id=' . $pedido['id']; ?>">Editar</a>
 					<a href="<?php echo '../Controladores/selector.php?accion=borrar&id=' . $pedido['id']; ?>">Borrar</a>
