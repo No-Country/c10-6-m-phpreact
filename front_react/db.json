@@ -1,0 +1,128 @@
+{
+  "platos": [
+    {
+      "id": "1",
+      "nombre_producto": "Milanesa a lo pobre",
+      "descripcion": "Milanesa de ternera, con 2 huevos  fritos, papas fritas doble",
+      "precio": "2050.00",
+      "imagen": "productos/prod_1.jpg",
+      "categoria": "principal"
+    },
+    {
+      "id": "2",
+      "nombre_producto": "Coca Cola 1L",
+      "descripcion": "botella vidrio",
+      "precio": "850.00",
+      "imagen": "productos/prod_2.jpg",
+      "categoria": "bebida"
+    },
+    {
+      "id": "3",
+      "nombre_producto": "Lomito completo",
+      "descripcion": "pan frances, lomito con tomate, lechuga huevoy queso y papas fritas\r\ncomen 2",
+      "precio": "1300.00",
+      "imagen": "productos/prod_3.jpg",
+      "categoria": "principal"
+    },
+    {
+      "id": "4",
+      "nombre_producto": "Milanesa voladora",
+      "descripcion": "Milanesa de Pollo, con 2 huevos  fritos, papas fritas doble",
+      "precio": "1050.00",
+      "imagen": "productos/prod_4.jpg",
+      "categoria": "principal"
+    },
+    {
+      "id": "5",
+      "nombre_producto": "Cerveza 1L",
+      "descripcion": "botella vidrio",
+      "precio": "950.00",
+      "imagen": "productos/prod_5.jpg",
+      "categoria": "bebida"
+    },
+    {
+      "id": "6",
+      "nombre_producto": "Sandwich J y Q",
+      "descripcion": "pan frances, Jamon Queso Tomate",
+      "precio": "1050.00",
+      "imagen": "productos/prod_6.jpg",
+      "categoria": "principal"
+    },
+    {
+      "id": "7",
+      "nombre_producto": "Flan casero",
+      "descripcion": "Flan casero con dulce leche o crema",
+      "precio": "850.00",
+      "imagen": "productos/prod_7.jpg",
+      "categoria": "postre"
+    },
+    {
+      "id": "8",
+      "nombre_producto": "Cassata",
+      "descripcion": "helado 3 sabores",
+      "precio": "650.00",
+      "imagen": "productos/prod_8.jpg",
+      "categoria": "postre"
+    },
+    {
+      "id": "9",
+      "nombre_producto": "Mixta",
+      "descripcion": "Tomate, Lechuga, Cebolla",
+      "precio": "750.00",
+      "imagen": "productos/prod_9.jpg",
+      "categoria": "entrada"
+    },
+    {
+      "id": "10",
+      "nombre_producto": "Waldorf",
+      "descripcion": "Ensalada, apio, nuez, queso duro y crema leche",
+      "precio": "1200.00",
+      "imagen": "productos/prod_10.jpg",
+      "categoria": "entrada"
+    },
+    {
+      "id": "11",
+      "nombre_producto": "Cerveza 350cm",
+      "descripcion": "Lata",
+      "precio": "550.00",
+      "imagen": "productos/prod_11.jpg",
+      "categoria": "principal"
+    },
+    {
+      "id": "12",
+      "nombre_producto": "Sandwich Salame y Queso",
+      "descripcion": "pan frances, Salame Queso Tomate",
+      "precio": "1050.00",
+      "imagen": "productos/prod_12.jpg",
+      "categoria": "principal"
+    }
+  ],
+  "pedidos": [
+    [
+      {
+        "mesa": "3"
+      },
+      {
+        "nombre_producto": "Coca Cola 1L",
+        "descripcion": "botella vidrio",
+        "precio": "850.00",
+        "id": "2",
+        "cantidad": 4,
+        "notas": ""
+      }
+    ],
+    [
+      {
+        "mesa": "1"
+      },
+      {
+        "nombre_producto": "Coca Cola 1L",
+        "descripcion": "botella vidrio",
+        "precio": "850.00",
+        "id": "2",
+        "cantidad": 4,
+        "notas": ""
+      }
+    ]
+  ]
+}

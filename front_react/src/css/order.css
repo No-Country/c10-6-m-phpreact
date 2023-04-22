@@ -1,0 +1,41 @@
+.title-order{
+    text-align: center;
+    margin: 0% ;
+}
+
+.container-order{
+    background-color: #2B2D42;
+    height: 100%;
+}
+
+.child-Container-order{
+    background-color: gray;
+    height: 70vh;
+    border-radius: 0 0 50px 50px;
+}
+
+.oder-card{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:2%;
+    
+    
+   
+}
+
+
+.oder-card img{
+    width: 50px;
+    height: 50px;
+}
+
+.btn-pedir{
+    border: none;
+    background-color: #FF5733;
+    width: 33%;
+    height: 5vh;
+    border-radius: 16px;
+    position: absolute;
+    bottom: 5%;
+    left: 33%;
+}

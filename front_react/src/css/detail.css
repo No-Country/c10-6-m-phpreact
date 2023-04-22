@@ -1,0 +1,47 @@
+.containerDetail{
+    background-color: #2B2D42;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+} 
+
+/* containerDetail corresponde al componente itemDetailContainer */
+
+.detail-box{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+}
+.detail-box h1{
+    text-align: center;
+}
+.detail-box span{
+    text-align: center;
+}
+.detail-box textarea{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.redDiv{
+    background-color: #FF5733;
+    width: 100%;
+    height: 15vh;
+    border-radius: 0 0 50px 50px;
+}
+
+.detail_img{
+    width: 80%;
+    margin: 0 auto;
+    height: 30vh;
+    position: relative;
+    bottom: 10vh;
+}
+
+.arrow-back{
+    width: 10%;
+    margin-left: 2%;
+    margin-top: 2%;
+}
